@@ -59,9 +59,7 @@
     <a href="registro-universidad.jsp">11.-Ingresar Alumno </a><br><br>
     <a href="registro-validacion.jsp">12.-Validar Alumno </a><br><br>
     <a href="examen unidad 3.jsp">13.-Examen Unidad 3 </a><br><br>
-    <a href=""
-
-    <a href="../index.html">Volver al índice principal</a><br><br>
+    <a href="../index.html">Regresar</a><br>
     
 </center>
 </body>
