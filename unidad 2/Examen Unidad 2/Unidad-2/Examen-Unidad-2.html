@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Unidad 2 - Johan Rodríguez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white min-h-screen flex flex-col font-sans">
+
+    <header class="p-8 border-b border-gray-800 bg-gray-900 shadow-xl">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 uppercase tracking-tighter">
+                Examen Unidad 2: Integración de APIs
+            </h1>
+            <p class="text-gray-400 mt-2">Desarrollador: <span class="text-white font-semibold">Johan Alexander Rodríguez González</span></p>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <section class="bg-gray-900 p-6 rounded-3xl border border-pink-500/30 flex flex-col items-center">
+            <h2 class="text-xl font-bold mb-4 text-pink-500 uppercase italic">TikTok API</h2>
+            <div id="videoContainer" class="w-full bg-black rounded-xl overflow-hidden min-h-[400px] flex items-center justify-center border border-gray-800">
+                <p class="text-gray-600 text-sm">El video se cargará aquí...</p>
+            </div>
+            <button id="btnTikTok" class="mt-4 w-full bg-pink-600 hover:bg-pink-500 py-3 rounded-xl font-bold transition-all">
+                Cargar mi Video
+            </button>
+        </section>
+
+        <section class="bg-gray-900 p-6 rounded-3xl border border-emerald-500/30">
+            <h2 class="text-xl font-bold mb-4 text-emerald-500 uppercase italic">ChatGPT API</h2>
+            <textarea id="gptInput" class="w-full h-32 p-4 bg-gray-800 border border-gray-700 rounded-xl focus:ring-2 ring-emerald-500 outline-none text-sm mb-4" placeholder="Haz una pregunta a la IA..."></textarea>
+            <button id="btnGPT" class="w-full bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl font-bold transition-all">Consultar OpenAI</button>
+            <div id="gptRes" class="mt-4 p-4 bg-black/50 rounded-xl text-sm text-gray-300 min-h-[100px] border border-gray-800">Respuesta de GPT...</div>
+        </section>
+
+        <section class="bg-gray-900 p-6 rounded-3xl border border-blue-500/30">
+            <h2 class="text-xl font-bold mb-4 text-blue-500 uppercase italic">Gemini API</h2>
+            <input type="text" id="geminiInput" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl focus:ring-2 ring-blue-500 outline-none text-sm mb-4" placeholder="¿Qué quieres saber de Google?">
+            <button id="btnGemini" class="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-all">Consultar Gemini</button>
+            <div id="geminiRes" class="mt-4 p-4 bg-black/50 rounded-xl text-sm text-gray-300 min-h-[100px] border border-gray-800 italic">Respuesta de Gemini...</div>
+        </section>
+
+    </main>
+
+    <footer class="p-6 bg-black border-t border-gray-800 text-center">
+        <p class="text-gray-500 text-sm tracking-widest uppercase">
+            Johan Alexander Rodríguez González | <span class="text-indigo-500 font-bold">DSM-51</span>
+        </p>
+    </footer>
+
+    <script src="tiktok.js"></script>
+    <script src="chatgpt.js"></script>
+    <script src="gemini.js"></script>
+</body>
+</html>

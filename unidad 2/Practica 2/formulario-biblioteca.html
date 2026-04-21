@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Biblioteca</title>
+</head>
+<body>
+    <h1>Registro de Libros</h1>
+    <form id="formLibro" novalidate>
+        <label>Nombre del Libro:</label><br>
+        <input type="text" id="nombre" required><br><br>
+
+        <label>Autor(es):</label><br>
+        <input type="text" id="autor" required><br><br>
+
+        <label>Editorial:</label><br>
+        <input type="text" id="editorial"><br><br>
+
+        <label>Año (2021-2026):</label><br>
+        <input type="number" id="anio" min="2021" max="2026" required><br><br>
+
+        <label>País:</label><br>
+        <select id="pais" required>
+            <option value="">Seleccione...</option>
+            <option value="Mexico">México</option>
+            <option value="Espana">España</option>
+            <option value="Cuba">Cuba</option>
+        </select><br><br>
+
+        <label>Páginas:</label><br>
+        <input type="number" id="paginas"><br><br>
+
+        <label>Precio (Min $100):</label><br>
+        <input type="number" id="precio" min="100" step="0.50"><br><br>
+
+        <label>Edición:</label><br>
+        <input type="text" id="edicion"><br><br>
+
+        <label>ISBN (13 dígitos):</label><br>
+        <input type="text" id="isbn" placeholder="Ej: 978-1234567890"><br><br>
+
+        <button type="submit">Guardar Libro</button>
+    </form>
+    <p id="msgLibro" style="color:red;"></p>
+
+    <script>
+        document.getElementById('formLibro').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let anio = parseInt(document.getElementById('anio').value);
+            let precio = parseFloat(document.getElementById('precio').value);
+            let pais = document.getElementById('pais').value;
+            let isbn = document.getElementById('isbn').value;
+            let msg = document.getElementById('msgLibro');
+
+            // Validación País
+            if (!["Mexico", "Espana", "Cuba"].includes(pais)) {
+                msg.innerText = "Error: País no permitido. Solo México, España o Cuba.";
+                return;
+            }
+
+            // Validación Año (2021-2026)
+            if (anio < 2021 || anio > 2026) {
+                msg.innerText = "Error: El año debe estar entre 2021 y 2026.";
+                return;
+            }
+
+            // Validación Precio Minimo
+            if (precio < 100) {
+                msg.innerText = "Error: El precio mínimo es de $100.";
+                return;
+            }
+
+            // Validación ISBN (Patrón simple: 13 dígitos numéricos, opcional guiones)
+            // Se eliminan guiones para contar los números
+            let isbnClean = isbn.replace(/-/g, '');
+            if (isbnClean.length !== 13 || isNaN(isbnClean)) {
+                msg.innerText = "Error: El ISBN debe contener 13 dígitos numéricos válidos.";
+                return;
+            }
+
+            alert("Libro Registrado Correctamente.");
+        });
+    </script>
+</body>
+</html>

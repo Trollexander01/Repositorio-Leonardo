@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Venta Zapatería</title>
+</head>
+<body>
+    <h1>Venta de Calzado</h1>
+    <form id="formZapato" novalidate>
+        <label>Modelo / Nombre del Zapato:</label><br>
+        <input type="text" id="modelo" required><br><br>
+
+        <label>Color (Solo Negro o Camel):</label><br>
+        <select id="color" required>
+            <option value="">Seleccione...</option>
+            <option value="Negro">Negro</option>
+            <option value="Camel">Camel</option>
+        </select><br><br>
+
+        <label>Número/Talla (Solo enteros, ej: 24, 25):</label><br>
+        <input type="number" id="talla" step="1" required><br><br>
+
+        <label>Precio ($100 - $1000):</label><br>
+        <input type="number" id="precio" min="100" max="1000" required><br><br>
+
+        <button type="submit">Procesar Venta</button>
+    </form>
+    <p id="msgZapato" style="color:red;"></p>
+
+    <script>
+        document.getElementById('formZapato').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let precio = parseFloat(document.getElementById('precio').value);
+            let talla = parseFloat(document.getElementById('talla').value);
+            let color = document.getElementById('color').value;
+            let msg = document.getElementById('msgZapato');
+
+            // Validación Precio
+            if (precio < 100 || precio > 1000) {
+                msg.innerText = "Error: El precio debe oscilar entre $100 y $1000.";
+                return;
+            }
+
+            // Validación Color (Extra seguridad aunque sea select)
+            if (color !== "Negro" && color !== "Camel") {
+                msg.innerText = "Error: Solo se permiten colores Negro y Camel.";
+                return;
+            }
+
+            // Validación Talla (Solo enteros, no medios puntos)
+            if (!Number.isInteger(talla)) {
+                msg.innerText = "Error: Solo se venden números enteros (Ej: 9 es válido, 9.5 no).";
+                return;
+            }
+
+            alert("Venta procesada correctamente.");
+        });
+    </script>
+</body>
+</html>

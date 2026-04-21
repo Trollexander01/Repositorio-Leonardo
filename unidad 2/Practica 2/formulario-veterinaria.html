@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Veterinaria</title>
+</head>
+<body>
+    <h1>Registro de Paciente - Veterinaria</h1>
+    <form id="formVet" novalidate>
+        <label>Nombre Mascota:</label><br>
+        <input type="text" id="nombreMascota" required><br><br>
+
+        <label>Edad (Años):</label><br>
+        <input type="number" id="edad" step="0.1"><br><br>
+
+        <label>Fecha de Nacimiento:</label><br>
+        <input type="date" id="fechaNac"><br><br>
+
+        <label>Especie:</label><br>
+        <input type="text" id="especie" placeholder="Perro, Gato, etc." required><br><br>
+
+        <label>Raza:</label><br>
+        <input type="text" id="raza"><br><br>
+
+        <label>Peso (kg):</label><br>
+        <input type="number" id="peso" step="0.01"><br><br>
+
+        <label>Estatura (cm):</label><br>
+        <input type="number" id="estatura"><br><br>
+
+        <label>Propietario:</label><br>
+        <input type="text" id="propietario" required><br><br>
+
+        <label>Teléfono:</label><br>
+        <input type="tel" id="telefono" required><br><br>
+
+        <label>Dirección:</label><br>
+        <input type="text" id="direccion"><br><br>
+
+        <button type="submit">Registrar Mascota</button>
+    </form>
+    <p id="msgVet" style="color:red;"></p>
+
+    <script>
+        document.getElementById('formVet').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let nombre = document.getElementById('nombreMascota').value;
+            let prop = document.getElementById('propietario').value;
+            let peso = parseFloat(document.getElementById('peso').value);
+
+            if (!nombre || !prop) {
+                document.getElementById('msgVet').innerText = "Error: Nombre de mascota y propietario son obligatorios.";
+                return;
+            }
+
+            if (peso <= 0) {
+                 document.getElementById('msgVet').innerText = "Error: El peso debe ser mayor a 0.";
+                 return;
+            }
+
+            alert("Mascota registrada exitosamente.");
+        });
+    </script>
+</body>
+</html>

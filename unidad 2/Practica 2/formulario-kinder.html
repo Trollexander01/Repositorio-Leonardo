@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Kinder</title>
+</head>
+<body>
+    <h1>Registro de Infante - Kinder</h1>
+    <form id="formKinder" novalidate>
+        <label>Nombre del Infante:</label><br>
+        <input type="text" id="nombreInfante" required><br><br>
+
+        <label>Edad:</label><br>
+        <input type="number" id="edad" min="3" max="6" required><br><br>
+
+        <label>Fecha de Nacimiento:</label><br>
+        <input type="date" id="fechaNac" required><br><br>
+
+        <label>Nombre del Padre:</label><br>
+        <input type="text" id="nombrePadre" required><br><br>
+
+        <label>Nombre de la Madre:</label><br>
+        <input type="text" id="nombreMadre" required><br><br>
+
+        <label>Domicilio:</label><br>
+        <input type="text" id="domicilio" required><br><br>
+
+        <label>Teléfono Celular (10 dígitos):</label><br>
+        <input type="tel" id="telefono" placeholder="Ej: 3111234567" required><br><br>
+
+        <label>Correo Electrónico:</label><br>
+        <input type="email" id="correo" required><br><br>
+
+        <label>Municipio (Solo Nayarit):</label><br>
+        <select id="municipio" required>
+            <option value="">Seleccione...</option>
+            <option value="Acaponeta">Acaponeta</option>
+            <option value="Ahuacatlán">Ahuacatlán</option>
+            <option value="Amatlán de Cañas">Amatlán de Cañas</option>
+            <option value="Bahía de Banderas">Bahía de Banderas</option>
+            <option value="Compostela">Compostela</option>
+            <option value="Huajicori">Huajicori</option>
+            <option value="Ixtlán del Río">Ixtlán del Río</option>
+            <option value="Jala">Jala</option>
+            <option value="La Yesca">La Yesca</option>
+            <option value="Rosamorada">Rosamorada</option>
+            <option value="Ruiz">Ruiz</option>
+            <option value="San Blas">San Blas</option>
+            <option value="San Pedro Lagunillas">San Pedro Lagunillas</option>
+            <option value="Santa María del Oro">Santa María del Oro</option>
+            <option value="Santiago Ixcuintla">Santiago Ixcuintla</option>
+            <option value="Tecuala">Tecuala</option>
+            <option value="Tepic">Tepic</option>
+            <option value="Tuxpan">Tuxpan</option>
+            <option value="Xalisco">Xalisco</option>
+        </select><br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+    <p id="mensaje" style="color:red;"></p>
+
+    <script>
+        document.getElementById('formKinder').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let telefono = document.getElementById('telefono').value;
+            let municipio = document.getElementById('municipio').value;
+            let msg = document.getElementById('mensaje');
+
+            // Validación de Teléfono (10 dígitos exactos)
+            let telRegex = /^\d{10}$/;
+            if (!telRegex.test(telefono)) {
+                msg.innerText = "Error: El teléfono debe tener 10 dígitos numéricos.";
+                return;
+            }
+
+            // Validación de Municipio
+            if (municipio === "") {
+                msg.innerText = "Error: Debe seleccionar un municipio de Nayarit.";
+                return;
+            }
+
+            alert("Registro Exitoso: Datos del infante capturados.");
+        });
+    </script>
+</body>
+</html>

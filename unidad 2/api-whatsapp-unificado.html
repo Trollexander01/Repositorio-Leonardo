@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>API Whatsapp Unificado</title>
+</head>
+<body>
+
+    <h1>API Whatsapp Unificado</h1>
+
+    <h3>Ingrese los 4 Números (con código de país):</h3>
+    <label>Teléfono 1:</label> <input type="text" id="num1" placeholder="Ej: 521..." value=""><br><br>
+    <label>Teléfono 2:</label> <input type="text" id="num2" placeholder="Ej: 521..." value=""><br><br>
+    <label>Teléfono 3:</label> <input type="text" id="num3" placeholder="Ej: 521..." value=""><br><br>
+    <label>Teléfono 4:</label> <input type="text" id="num4" placeholder="Ej: 521..." value=""><br><br>
+
+    <hr>
+
+    <h3>Ingrese los 2 Mensajes:</h3>
+    <label>Mensaje A (Para Tels 1 y 2):</label><br>
+    <input type="text" id="msg1" value="Hola, este es el mensaje A" style="width: 300px;"><br><br>
+
+    <label>Mensaje B (Para Tels 3 y 4):</label><br>
+    <input type="text" id="msg2" value="Hola, este es el mensaje B" style="width: 300px;"><br><br>
+
+    <hr>
+
+    <h3>Ejecutar Envíos:</h3>
+
+    <button onclick="enviar(1, 1)">Ejercicio 1 (Tel 1 + Msj A)</button><br><br>
+
+    <button onclick="enviar(2, 1)">Ejercicio 2 (Tel 2 + Msj A)</button><br><br>
+
+    <button onclick="enviar(3, 2)">Ejercicio 3 (Tel 3 + Msj B)</button><br><br>
+
+    <button onclick="enviar(4, 2)">Ejercicio 4 (Tel 4 + Msj B)</button>
+
+    <script>
+        function enviar(numIndex, msgIndex) {
+            // Obtener los valores de los inputs basados en los índices
+            var telefono = document.getElementById('num' + numIndex).value;
+            var mensaje = document.getElementById('msg' + msgIndex).value;
+
+            // Validar que haya número
+            if (telefono === "") {
+                alert("Por favor ingresa el Teléfono " + numIndex);
+                return;
+            }
+
+            // Construir la URL
+            // encodeURIComponent asegura que los espacios y símbolos del mensaje funcionen bien
+            var url = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + encodeURIComponent(mensaje);
+
+            // Abrir en nueva pestaña
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
